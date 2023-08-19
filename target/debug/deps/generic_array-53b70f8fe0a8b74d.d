@@ -1,0 +1,11 @@
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\generic_array-53b70f8fe0a8b74d.rmeta: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\hex.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\impls.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\arr.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\functional.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\iter.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\sequence.rs
+
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\generic_array-53b70f8fe0a8b74d.d: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\hex.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\impls.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\arr.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\functional.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\iter.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\sequence.rs
+
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\lib.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\hex.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\impls.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\arr.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\functional.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\iter.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\generic-array-0.14.7\src\sequence.rs:

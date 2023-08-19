@@ -1,0 +1,18 @@
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\typenum-b5271f46faefe3a9.rmeta: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\bit.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\int.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\marker_traits.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\operator_aliases.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\private.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\type_operators.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\uint.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\array.rs C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\op.rs C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\consts.rs
+
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\typenum-b5271f46faefe3a9.d: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\bit.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\int.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\marker_traits.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\operator_aliases.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\private.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\type_operators.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\uint.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\array.rs C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\op.rs C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\consts.rs
+
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\lib.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\bit.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\int.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\marker_traits.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\operator_aliases.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\private.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\type_operators.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\uint.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\typenum-1.16.0\src\array.rs:
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\op.rs:
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\build\typenum-79974f5a895a50f6\out\consts.rs:
+
+# env-dep:TYPENUM_BUILD_CONSTS=C:\\Users\\kubas\\Desktop\\VCS_tool_\\target\\debug\\build\\typenum-79974f5a895a50f6\\out\\consts.rs
+# env-dep:TYPENUM_BUILD_OP=C:\\Users\\kubas\\Desktop\\VCS_tool_\\target\\debug\\build\\typenum-79974f5a895a50f6\\out\\op.rs
