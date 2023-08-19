@@ -1,0 +1,1 @@
+for<'a> fn(_, &'static str, &'static str, &'static str, &'static str, &'a _) -> std::result::Result<<_ as GitObject::_::_serde::Serializer>::Ok, <_ as GitObject::_::_serde::Serializer>::Error> {GitObject::_::_serde::__private::ser::serialize_tagged_newtype::<_, _>}

@@ -1,0 +1,11 @@
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\digest-d53fb7f5bc184e92.rmeta: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\ct_variable.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\rt_variable.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\wrapper.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\xof_reader.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\digest.rs
+
+C:\Users\kubas\Desktop\VCS_tool_\target\debug\deps\digest-d53fb7f5bc184e92.d: C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\lib.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\ct_variable.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\rt_variable.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\wrapper.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\xof_reader.rs C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\digest.rs
+
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\lib.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\ct_variable.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\rt_variable.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\wrapper.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\core_api\xof_reader.rs:
+C:\Users\kubas\.cargo\registry\src\index.crates.io-6f17d22bba15001f\digest-0.10.7\src\digest.rs:
