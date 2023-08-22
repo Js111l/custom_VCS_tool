@@ -26,12 +26,14 @@ fn main() {
     // let repo_init: RepositoryInitializer = RepositoryInitializer;
     // repo_init.init("-p", "C:\\Users\\kubas\\Desktop\\llllll");
     //
-    let mut staged_files: Vec<String> = Vec::new();
-    let mut untracked_files: Vec<&str> = Vec::new();
+    fs::read(Path::new("C:\\Users\\kubas\\Desktop\\llllll")).unwrap();
 
-    let mut scanner = ObjectScanner::new(staged_files);
-    scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll");
-
+    // let mut staged_files: Vec<String> = Vec::new();
+    // let mut untracked_files: Vec<&str> = Vec::new();
+    // let xx = staged_files.to_owned();
+    // let mut scanner = ObjectScanner::new(staged_files);
+    // scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll");
+    // println!("{:?}", xx);
     // let obj = Blob {
     //   id: 12,
     //    key: 12,
