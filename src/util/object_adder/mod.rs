@@ -4,8 +4,6 @@ use crate::util::object_saver::ObjectSaver;
 use crate::util::object_serializer::ObjectSerializer;
 use crate::FileCreator;
 use serde::Serialize;
-use sha1::digest::typenum::private::IsEqualPrivate;
-use std::fmt::format;
 use std::fs;
 
 struct ObjectAdder {}

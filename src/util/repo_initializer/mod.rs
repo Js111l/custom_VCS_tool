@@ -30,7 +30,7 @@ impl RepositoryInitializer {
         creator.create_file(format!("{}{}", git_path, "\\HEAD").as_str());
         Ok(())
     }
-    
+
     fn create_objects_dir(&self, git_path: &str) -> std::io::Result<()> {
         fs::create_dir(Path::new(format!("{}{}", git_path, "\\objects").as_str()))?;
         fs::create_dir(Path::new(
