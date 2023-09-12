@@ -9,20 +9,24 @@ use std::io::Write;
 pub struct ObjectSaver;
 
 impl ObjectSaver {
-    pub fn save<T: GitObject + Serialize>(&self, git_object: &T) {
+    pub fn save<T: GitObject + Serialize>(&self, git_object: &T, git_path: &str) {
         let byte_array = ObjectSerializer::serialize_object(git_object);
         let hasher = ObjectHasher;
         let hash = hasher.get_hash(byte_array);
         let path_from_hash = hasher.get_path_from_hash(&hash);
         self.create_sub_dir(
             format!(
-                "C:\\Users\\kubas\\Desktop\\llllll\\git\\objects\\{}",
+                "{}{}{}",
+                git_path,
+                "\\objects\\".to_string(),
                 &path_from_hash[0..2]
             )
             .as_str(),
         );
         let path = format!(
-            "C:\\Users\\kubas\\Desktop\\llllll\\git\\objects\\{}",
+            "{}{}{}",
+            git_path,
+            "\\objects\\".to_string(),
             path_from_hash
         );
         let mut file = File::create(path).unwrap();

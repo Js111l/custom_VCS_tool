@@ -1,4 +1,3 @@
-use serde::Serialize;
 use sha1::{Digest, Sha1};
 
 pub(crate) struct ObjectHasher;
@@ -10,12 +9,7 @@ impl ObjectHasher {
         let result = hasher.finalize();
         return format!("{:x}", result);
     }
-    // pub fn get_hash_string(&self, str: String) -> String {
-    //     let mut hasher = Sha1::new();
-    //     hasher.update(str);
-    //     let result = hasher.finalize();
-    //     return format!("{:x}", result);
-    // }
+
     pub fn get_path_from_hash(&self, hash: &str) -> String {
         let dir = &hash[0..2];
         let file_name = &hash[2..];

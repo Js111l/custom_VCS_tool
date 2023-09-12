@@ -6,18 +6,39 @@ use crate::FileCreator;
 use serde::Serialize;
 use std::fs;
 
-struct ObjectAdder {}
+pub(crate) struct ObjectAdder {}
 
 impl ObjectAdder {
-    fn objects_to_add<T: GitObject + Serialize>(&self, objects_to_add: Vec<T>, git_path: &str) {
+    pub fn new() -> ObjectAdder {
+        return Self {};
+    }
+    pub fn save_scanned_objects<T: GitObject + Serialize>(
+        &self,
+        objects_to_add: Vec<T>,
+        git_path: &str,
+    ) {
+        if (self.create_index_file(git_path).is_err()) {
+            println!("index aready exists!");
+        };
         let saver = ObjectSaver;
+        let mut hashes: Vec<String> = Vec::new();
+
         objects_to_add.iter().for_each(|object| {
-            saver.save(object);
+            saver.save(object, git_path);
             let byte_array = ObjectSerializer::serialize_object(object);
             let hasher = ObjectHasher;
+
             let hash = hasher.get_hash(byte_array);
-            if let Err(err) = fs::write(git_path, format!("{} {}", hash, git_path)) {
-                println!("unexpected error {}", err)
+            hashes.push(hash.clone());
+
+            let pathFromHash = hasher.get_path_from_hash(hash.as_str());
+            let path = format!("{}{}{}", git_path, "\\objects\\".to_string(), pathFromHash);
+            if let Err(err) = fs::write(
+                format!("{}{}", git_path, "\\index"),
+                format!("{} {}", hash, path),
+            ) {
+                println!("{}", format!("{} {}", hash, path));
+                println!("{}", format!("{}{}", git_path, "\\index"));
             }
         });
     }

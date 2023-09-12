@@ -5,6 +5,9 @@ use std::path::Path;
 pub struct RepositoryInitializer;
 
 impl RepositoryInitializer {
+    pub fn new() -> RepositoryInitializer {
+        return Self {};
+    }
     pub fn init(self, option: &str, option_argument: &str) {
         let mut path = "";
         if option.eq("-p") {

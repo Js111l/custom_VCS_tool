@@ -1,9 +1,11 @@
+use crate::model::git_object::{Node, Tree};
 use std::fs;
 use std::fs::ReadDir;
 
 pub fn get_tree_from_dir(read_dir: ReadDir) -> Tree {
     let mut root_node = Node {
-        content: "root".to_string(),
+        name: "root".to_string(),
+        content: vec![],
         children: vec![],
     };
 
@@ -13,7 +15,8 @@ pub fn get_tree_from_dir(read_dir: ReadDir) -> Tree {
         let file_name: String = path.file_name().unwrap().to_str().unwrap().to_string();
         if path.is_file() {
             &root_node.add(Node {
-                content: file_name,
+                name: file_name,
+                content: fs::read(path).unwrap(),
                 children: vec![],
             });
         } else {
@@ -22,12 +25,16 @@ pub fn get_tree_from_dir(read_dir: ReadDir) -> Tree {
         }
     });
 
-    return Tree { root: root_node };
+    return Tree {
+        name: "root".to_string(),
+        root: root_node,
+    };
 }
 
 fn get_node_from_sub_dir(read_dir: ReadDir, dir_name: String) -> Node {
     let mut root = Node {
-        content: dir_name,
+        name: dir_name,
+        content: vec![],
         children: vec![],
     };
 
@@ -37,7 +44,8 @@ fn get_node_from_sub_dir(read_dir: ReadDir, dir_name: String) -> Node {
         let file_name = path.file_name().unwrap().to_str().unwrap().to_string();
         if path.is_file() {
             &root.add(Node {
-                content: file_name,
+                name: file_name,
+                content: fs::read(path).unwrap(),
                 children: vec![],
             });
         } else {

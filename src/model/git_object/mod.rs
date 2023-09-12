@@ -14,11 +14,12 @@ impl GitObject for Tree {}
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Node {
-    content: String,
-    children: Vec<Node>,
+    pub(crate) name: String,
+    pub(crate) content: Vec<u8>,
+    pub(crate) children: Vec<Node>,
 }
 impl Node {
-    fn add(&mut self, node: Node) {
+    pub(crate) fn add(&mut self, node: Node) {
         self.children.push(node);
     }
     fn append(&mut self, nodes: &mut Vec<Node>) {
@@ -26,7 +27,7 @@ impl Node {
     }
 }
 
-#[derive(Serialize, Deserialize, PartialEq)]
+#[derive(Serialize, Deserialize, PartialEq, Clone)]
 pub struct Blob {
     pub name: String,
     pub(crate) content: Vec<u8>,

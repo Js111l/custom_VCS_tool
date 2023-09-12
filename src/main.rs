@@ -1,12 +1,20 @@
+use crate::model::git_object::{Blob, GitObject};
 use crate::util::directory_tree::get_tree_from_dir;
+use crate::util::object_adder::ObjectAdder;
+use crate::util::object_diff_checker::check_diff;
+use crate::util::object_scanner::ObjectScanner;
+use crate::util::repo_initializer::RepositoryInitializer;
 use sha1::digest::typenum::private::IsEqualPrivate;
 use std::fs;
 use std::fs::File;
+use std::path::Path;
+use std::ptr::null;
 
 mod util {
     pub mod commit;
     pub mod directory_tree;
     pub mod object_adder;
+    pub mod object_diff_checker;
     pub mod object_hasher;
     pub mod object_saver;
     pub mod object_scanner;
@@ -20,6 +28,12 @@ mod model {
 
 fn main() {
     println!("Hello, world!");
+    let mut input = String::new();
+    // while true {
+    //     input.clear();
+    //     std::io::stdin().read_line(&mut input).unwrap();
+    //     processCommand(&input);
+    // }
     // REPO INIT
     // let repo_init: RepositoryInitializer = RepositoryInitializer;
     // repo_init.init("-p", "C:\\Users\\kubas\\Desktop\\llllll");
@@ -29,7 +43,56 @@ fn main() {
     // let x = get_tree_from_dir(xx);
     // println!("{:?}", x);
 
+    //let readDir = fs::read_dir(Path::new("C:\\Users\\kubas\\Desktop\\llllll")).unwrap();
+    let mut scanner = ObjectScanner::new();
+    let blobs = scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll");
+    blobs.iter().for_each(|x| {
+        //println!(x.name);
+    });
+    //let adder = ObjectAdder::new();
+    //adder.save_scanned_objects(blobs.to_vec(), "C:\\Users\\kubas\\Desktop\\llllll\\giter");
+
+    let newBlobs = scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll2");
+
+    check_diff(blobs, newBlobs);
     // let mut files: Vec<File> = Vec::new();
+
+    //1, Firstly scan the new objects, or if this is 1 time, scan objects to add
+    //2. secondly, take those new file and "save" them in /objects and in index file
+    // and yes, git add do save all untracked files and initialize index file.
+
+    // git add
+    // TODO
+    // let objs: Vec<Blob> = Vec::new();
+    // let adder = ObjectAdder::new();
+    // adder.objects_to_add(objs, "C:\\Users\\kubas\\Desktop\\llllll");
+
+    //3. in commit we should save a whole tree object representing current state of the project
+    // and save it in /objects. References to head should be in head file
+
+    //git commit
+    // TODO
+}
+
+fn processCommand(input: &String) {
+    let strList = input.split(" ").collect::<Vec<&str>>();
+    let command = strList[0];
+    let rootDirPath = strList[2];
+    match command {
+        "init" => {
+            let initializer = RepositoryInitializer::new();
+            initializer.init(strList[1], strList[2]);
+        }
+        "add" => {
+            let readDir = fs::read_dir(Path::new(rootDirPath)).unwrap();
+            let mut scanner = ObjectScanner::new();
+            let blobs = scanner.scan_objects(rootDirPath);
+            let adder = ObjectAdder::new();
+            adder.save_scanned_objects(blobs, rootDirPath);
+        }
+        "commit" => {}
+        _ => {} // TODO PROCESS COMMANDS!
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -43,7 +106,7 @@ struct FileCreator;
 impl FileCreator {
     pub fn create_file(&self, path: &str) {
         if let Err(err) = File::create(path) {
-            println!("Unexpected error! {}", err)
+            println!("Unexpected error! {}", err);
         }
     }
 }

@@ -10,9 +10,9 @@ impl Commiter {
     fn create_commit(&self, dir_path: String) {
         let read_dir = fs::read_dir(dir_path).unwrap();
         let dir_tree = get_tree_from_dir(read_dir);
-        let byte_array = ObjectSerializer::serialize_object(dir_tree);
+        let byte_array = ObjectSerializer::serialize_object(&dir_tree);
         let saver = ObjectSaver;
-        saver.save(dir_tree);
+        saver.save(&dir_tree, "");
         // if let Err(err) = fs::write(path, format!("{} {}", hash, path)) {
         //     println!("unexpected error {}", err)
         // }
