@@ -49,6 +49,7 @@ fn main() {
     blobs.iter().for_each(|x| {
         //println!(x.name);
     });
+    
     //let adder = ObjectAdder::new();
     //adder.save_scanned_objects(blobs.to_vec(), "C:\\Users\\kubas\\Desktop\\llllll\\giter");
 
@@ -57,20 +58,6 @@ fn main() {
     check_diff(blobs, newBlobs);
     // let mut files: Vec<File> = Vec::new();
 
-    //1, Firstly scan the new objects, or if this is 1 time, scan objects to add
-    //2. secondly, take those new file and "save" them in /objects and in index file
-    // and yes, git add do save all untracked files and initialize index file.
-
-    // git add
-    // TODO
-    // let objs: Vec<Blob> = Vec::new();
-    // let adder = ObjectAdder::new();
-    // adder.objects_to_add(objs, "C:\\Users\\kubas\\Desktop\\llllll");
-
-    //3. in commit we should save a whole tree object representing current state of the project
-    // and save it in /objects. References to head should be in head file
-
-    //git commit
     // TODO
 }
 
