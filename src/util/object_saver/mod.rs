@@ -29,10 +29,19 @@ impl ObjectSaver {
             "\\objects\\".to_string(),
             path_from_hash
         );
-        let mut file = File::create(path).unwrap();
-        file.write_all(&ObjectSerializer::serialize_object(git_object));
+        match File::create(&path) {
+            Ok(mut file) => {
+                file.write_all(&ObjectSerializer::serialize_object(git_object));
+            }
+            Err(_) => {
+                fs::remove_file(&path).unwrap();
+                let mut file = File::create(&path).unwrap();
+                file.write_all(&ObjectSerializer::serialize_object(git_object));
+            }
+        };
     }
     fn create_sub_dir(&self, path: &str) {
+        println!("{}", path);
         fs::create_dir(path).unwrap();
     }
 }

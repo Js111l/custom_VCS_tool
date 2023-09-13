@@ -1,15 +1,25 @@
 use crate::model::git_object::Blob;
+use std::collections::HashMap;
 
-pub fn check_diff(oldBlobs: Vec<Blob>, newBlobs: Vec<Blob>) {
-    let oldNames: Vec<String> = oldBlobs.iter().map(|x| x.name.to_string()).collect();
-    newBlobs.iter().for_each(|newBlob| {
-        if (!oldNames.contains(&newBlob.name)) {
-            println!("New file: {}", newBlob.name);
-        }
-        oldBlobs.iter().for_each(|oldBlob| {
-            if (oldBlob.name.eq(&newBlob.name) && oldBlob.content != newBlob.content) {
-                println!("New file: {}", newBlob.name);
-            }
-        })
+pub fn check_diff(oldBlobs: &mut Vec<Blob>, newBlobs: Vec<Blob>) -> Vec<Blob> {
+    let mut oldMap: HashMap<String, &mut Blob> = HashMap::new();
+    oldBlobs.into_iter().for_each(|x| {
+        oldMap.insert(x.name.clone(), x);
     });
+    let mut differences: Vec<Blob> = Vec::new();
+    newBlobs.into_iter().for_each(|x| {
+        if (oldMap.get(&*x.name).is_none()) {
+            differences.push(x);
+        } else {
+            let blob = oldMap.get(&*x.name).unwrap();
+            if (blob.content != x.content) {
+                differences.push(x);
+            }
+        }
+    });
+    
+    differences.iter().for_each(|x| {
+        println!("New file: {}", x.name);
+    });
+    return differences;
 }

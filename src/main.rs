@@ -1,14 +1,11 @@
 use crate::model::git_object::{Blob, GitObject};
-use crate::util::directory_tree::get_tree_from_dir;
+use crate::util::commit::Commiter;
 use crate::util::object_adder::ObjectAdder;
 use crate::util::object_diff_checker::check_diff;
 use crate::util::object_scanner::ObjectScanner;
 use crate::util::repo_initializer::RepositoryInitializer;
 use sha1::digest::typenum::private::IsEqualPrivate;
-use std::fs;
 use std::fs::File;
-use std::path::Path;
-use std::ptr::null;
 
 mod util {
     pub mod commit;
@@ -29,57 +26,91 @@ mod model {
 fn main() {
     println!("Hello, world!");
     let mut input = String::new();
-    // while true {
-    //     input.clear();
-    //     std::io::stdin().read_line(&mut input).unwrap();
-    //     processCommand(&input);
-    // }
-    // REPO INIT
-    // let repo_init: RepositoryInitializer = RepositoryInitializer;
-    // repo_init.init("-p", "C:\\Users\\kubas\\Desktop\\llllll");
-    //
-    // TREE
-    // let xx = fs::read_dir("C:\\Users\\kubas\\Desktop\\llllll").unwrap();
-    // let x = get_tree_from_dir(xx);
-    // println!("{:?}", x);
-
-    //let readDir = fs::read_dir(Path::new("C:\\Users\\kubas\\Desktop\\llllll")).unwrap();
-    let mut scanner = ObjectScanner::new();
-    let blobs = scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll");
-    blobs.iter().for_each(|x| {
-        //println!(x.name);
-    });
-    
-    //let adder = ObjectAdder::new();
-    //adder.save_scanned_objects(blobs.to_vec(), "C:\\Users\\kubas\\Desktop\\llllll\\giter");
-
-    let newBlobs = scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll2");
-
-    check_diff(blobs, newBlobs);
-    // let mut files: Vec<File> = Vec::new();
-
-    // TODO
+    let mut rootDirPath: &mut String = &mut "".to_string();
+    let mut blobs: Vec<Blob> = Vec::new();
+    let mut newBlobsAddedFlag = false;
+    while true {
+        input.clear();
+        std::io::stdin().read_line(&mut input).unwrap();
+        processCommand(&input, &mut rootDirPath, &mut blobs, &mut newBlobsAddedFlag);
+    }
 }
 
-fn processCommand(input: &String) {
+fn processCommand(
+    input: &String,
+    rootDirPath: &mut String,
+    blobs: &mut Vec<Blob>,
+    newBlobsAddedFlag: &mut bool,
+) {
     let strList = input.split(" ").collect::<Vec<&str>>();
-    let command = strList[0];
-    let rootDirPath = strList[2];
+    let command = strList[0].trim();
     match command {
         "init" => {
             let initializer = RepositoryInitializer::new();
             initializer.init(strList[1], strList[2]);
+            *rootDirPath = strList[2].to_string();
         }
         "add" => {
-            let readDir = fs::read_dir(Path::new(rootDirPath)).unwrap();
+            if (status(blobs, rootDirPath).is_empty()) {
+                println!("nothing to add");
+                return;
+            }
+
             let mut scanner = ObjectScanner::new();
-            let blobs = scanner.scan_objects(rootDirPath);
+            let mut newObjects: Vec<Blob> = Vec::new();
             let adder = ObjectAdder::new();
-            adder.save_scanned_objects(blobs, rootDirPath);
+
+            if (!&blobs.is_empty()) {
+                scanner
+                    .scan_objects(&rootDirPath)
+                    .into_iter()
+                    .for_each(|x| {
+                        if (!blobs.contains(&x)) {
+                            newObjects.push(x);
+                        }
+                    });
+                adder.save_scanned_objects(
+                    &mut newObjects,
+                    format!("{}{}", &rootDirPath, "\\git").as_str(),
+                );
+                blobs.append(&mut newObjects);
+                *newBlobsAddedFlag = true;
+            } else {
+                *blobs = scanner.scan_objects(&rootDirPath);
+                adder.save_scanned_objects(blobs, format!("{}{}", &rootDirPath, "\\git").as_str());
+                *newBlobsAddedFlag = true;
+            }
         }
-        "commit" => {}
-        _ => {} // TODO PROCESS COMMANDS!
+        "commit" => {
+            let commiter = Commiter::new();
+            let diffs = status(blobs, rootDirPath);
+            if (diffs.is_empty() && !*newBlobsAddedFlag) {
+                println!("nothing to commit, working tree clean");
+                return;
+            } else {
+                commiter.create_commit(
+                    rootDirPath.to_string(),
+                    format!("{}{}", &rootDirPath, "\\git"),
+                );
+                *newBlobsAddedFlag = false;
+            }
+        }
+        "status" => {
+            let diffs = status(blobs, rootDirPath);
+            if (diffs.is_empty()) {
+                println!("nothing to commit, working tree clean");
+            }
+        }
+        _ => {
+            println!("Cannot execute command: {}", command);
+        }
     }
+}
+
+fn status(blobs: &mut Vec<Blob>, rootDirPath: &mut String) -> Vec<Blob> {
+    let mut scanner = ObjectScanner::new();
+    let newBlobs = scanner.scan_objects(&rootDirPath);
+    return check_diff(blobs, newBlobs);
 }
 
 #[derive(Debug, Clone)]
@@ -97,17 +128,3 @@ impl FileCreator {
         }
     }
 }
-
-//let byte_array = ObjectSerializer::serialize_object(&obj);
-// let saver = ObjectSaver;
-// let obj2 = Blob {
-//     id: 12,
-//     key: 12,
-//     name: "lalala".to_string(),
-// };
-// saver.save(obj2);
-// let content = fs::
-// read(Path::new("C:\\Users\\kubas\\Desktop\\llllll\\git\\objects\\76\\9db3d79abef36b10a316ce58cd85b06b199bc7")).unwrap();
-// let blob: Blob = bincode::deserialize(&content).unwrap();
-// let scanner = ObjectScanner;
-// scanner.scan_objects("C:\\Users\\kubas\\Desktop\\llllll");

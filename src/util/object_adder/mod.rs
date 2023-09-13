@@ -1,4 +1,4 @@
-use crate::model::git_object::GitObject;
+use crate::model::git_object::{Blob, GitObject};
 use crate::util::object_hasher::ObjectHasher;
 use crate::util::object_saver::ObjectSaver;
 use crate::util::object_serializer::ObjectSerializer;
@@ -14,7 +14,7 @@ impl ObjectAdder {
     }
     pub fn save_scanned_objects<T: GitObject + Serialize>(
         &self,
-        objects_to_add: Vec<T>,
+        objects_to_add: &mut Vec<T>,
         git_path: &str,
     ) {
         if (self.create_index_file(git_path).is_err()) {

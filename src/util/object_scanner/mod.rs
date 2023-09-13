@@ -15,7 +15,7 @@ impl ObjectScanner {
         for entry in read {
             let entryPath = entry.unwrap().path();
             let fileName = entryPath.file_name().unwrap().to_str().unwrap().to_string();
-            let isNotGit = !fileName.eq("giter");
+            let isNotGit = !fileName.eq("git");
             if (entryPath.is_file()) {
                 blobs.push(Blob {
                     name: fileName,
